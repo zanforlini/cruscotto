@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Il mio Cruscotto</title>
+    <style>
+        body {
+            /* Sfondo sfumato scuro, dal nero al grigio scuro */
+            background: linear-gradient(to right, #000000, #2c3e50);
+            color: #ecf0f1; /* Colore del testo bianco/grigio chiaro */
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start; /* Allinea il contenuto in alto */
+            align-items: center;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 3em;
+            text-shadow: 2px 2px 4px #000000; /* Ombra per rendere il titolo più leggibile */
+            margin-bottom: 40px;
+        }
+        
+        /* Stili per le schede */
+        .tabs {
+            max-width: 900px;
+            width: 100%;
+            margin: 0 auto;
+            background-color: rgba(0, 0, 0, 0.4);
+            border-radius: 10px;
+            padding: 20px;
+        }
+
+        .tabs input[type="radio"] {
+            display: none;
+        }
+
+        .tabs-list {
+            display: flex;
+            justify-content: center;
+            border-bottom: 2px solid #555;
+            margin-bottom: 20px;
+        }
+
+        .tabs-list label {
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-weight: bold;
+            border-radius: 5px 5px 0 0;
+            user-select: none;
+        }
+
+        .tabs-list label:hover {
+            background-color: #555;
+        }
+        
+        .tab-content {
+            display: none;
+            padding: 20px 0;
+        }
+
+        /* Mostra il contenuto della scheda selezionata */
+        #tab1:checked ~ .tab-content.calcolatori,
+        #tab2:checked ~ .tab-content.esami,
+        #tab3:checked ~ .tab-content.siti {
+            display: block;
+        }
+
+        /* Stile per la scheda selezionata */
+        #tab1:checked ~ .tabs-list label[for="tab1"],
+        #tab2:checked ~ .tabs-list label[for="tab2"],
+        #tab3:checked ~ .tabs-list label[for="tab3"] {
+            background-color: #2c3e50;
+        }
+        
+        /* Stili per i riquadri e i pulsanti all'interno della scheda */
+        .sites-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            padding-top: 20px;
+        }
+
+        .section-container {
+            background-color: rgba(44, 62, 80, 0.6);
+            border: 1px solid #34495e;
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .section-container h2 {
+            font-size: 1.5em;
+            margin-top: 0;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+
+        .button-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .button-link {
+            display: block;
+            background-color: #3498db;
+            color: white;
+            padding: 12px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        .button-link:hover {
+            background-color: #2980b9;
+        }
+
+    </style>
+</head>
+<body>
+
+    <h1>Il mio Cruscotto Personale</h1>
+
+    <div class="tabs">
+        <input type="radio" name="tabs" id="tab1" checked>
+        <input type="radio" name="tabs" id="tab2">
+        <input type="radio" name="tabs" id="tab3">
+
+        <div class="tabs-list">
+            <label for="tab1">Calcolatori</label>
+            <label for="tab2">Esami Ematochimici</label>
+            <label for="tab3">Siti Esterni</label>
+        </div>
+
+        <div class="tab-content calcolatori">
+            <p>Contenuto della scheda Calcolatori.</p>
+        </div>
+
+        <div class="tab-content esami">
+            <p>Contenuto della scheda Esami Ematochimici.</p>
+        </div>
+        
+        <div class="tab-content siti">
+            <div class="sites-grid">
+                <div class="section-container">
+                    <h2>Prescrizione</h2>
+                    <div class="button-list">
+                        <a href="https://registri.aifa.gov.it/jam/UI/Login?goto=http%3A%2F%2Fregistri.aifa.gov.it%3A80%2Fregistri%2F" class="button-link">AIFA Piani terapeutici</a>
+                        <a href="https://psf.azero.veneto.it/psf/web/index.html" class="button-link">Veneto Piani terapeutici</a>
+                        <a href="https://cas.aulss6.veneto.it/cas/login?service=https%3A%2F%2Fextranet.aulss6.veneto.it%2Fpages%2Fhome" class="button-link">AULSS6 extranet</a>
+                        <a href="https://redcap.aopd.veneto.it/redcap/" class="button-link">Prescrizione cateteri AULSS 6</a>
+                    </div>
+                </div>
+
+                <div class="section-container">
+                    <h2>Clinica</h2>
+                    <div class="button-list">
+                        <a href="http://healthmeeting.sanita.padova.it/HealthMeeting/#/login" class="button-link">Telemedicina</a>
+                        <a href="https://172.25.0.42/AmbulatorioOsteoporosi/" class="button-link">Osteoporosi</a>
+                        <a href="https://serviziweb2.inps.it/PassiWeb/jsp/spid/loginSPID.jsp?uri=https%3a%2f%2fservizi2.inps.it%2fservizi%2fareariservata&S=S" class="button-link">INPS</a>
+                    </div>
+                </div>
+
+                <div class="section-container">
+                    <h2>UNIPD</h2>
+                    <div class="button-list">
+                        <a href="https://medicina.elearning.unipd.it/user/index.php?id=2494" class="button-link">MOODLE scuola di specializzazione</a>
+                        <a href="https://unipd.specializzazionemedica.it/" class="button-link">NOMOS valutazioni specializzandi</a>
+                        <a href="https://unipd.link/TIROCINI" class="button-link">Valutazione tirocini studenti</a>
+                    </div>
+                </div>
+
+                <div class="section-container">
+                    <h2>Login</h2>
+                    <div class="button-list">
+                        <a href="https://www.eduiss.it/course/view.php?id=521" class="button-link">EDUISS FORMAZIONE SUPERIORE</a>
+                        <a href="https://myaccount.google.com/" class="button-link">Gmail</a>
+                        <a href="https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=9199bf20-a13f-4107-85dc-02114787ef48&scope=https%3A%2F%2Foutlook.office.com%2F.default%20openid%20profile%20offline_access&redirect_uri=https%3A%2F%2Foutlook.live.com%2Fmail%2F&clien" class="button-link">Outlook</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
