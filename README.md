@@ -128,7 +128,7 @@
 </head>
 <body>
 
-    <h1>Il mio Cruscotto Personale</h1>
+    <h1>Base di lancio</h1>
 
     <div class="tabs">
         <input type="radio" name="tabs" id="tab1" checked>
@@ -136,19 +136,10 @@
         <input type="radio" name="tabs" id="tab3">
 
         <div class="tabs-list">
+            <label for="tab3">Siti Esterni</label>
             <label for="tab1">Calcolatori</label>
             <label for="tab2">Esami Ematochimici</label>
-            <label for="tab3">Siti Esterni</label>
         </div>
-
-        <div class="tab-content calcolatori">
-            <p>Contenuto della scheda Calcolatori.</p>
-        </div>
-
-        <div class="tab-content esami">
-            <p>Contenuto della scheda Esami Ematochimici.</p>
-        </div>
-        
         <div class="tab-content siti">
             <div class="sites-grid">
                 <div class="section-container">
@@ -189,6 +180,14 @@
                 </div>
             </div>
         </div>
+        <div class="tab-content calcolatori">
+            <p>Contenuto della scheda Calcolatori.</p>
+        </div>
+
+        <div class="tab-content esami">
+            <p>Contenuto della scheda Esami Ematochimici.</p>
+        </div>
+        
     </div>
 
 </body>
