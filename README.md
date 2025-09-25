@@ -194,6 +194,7 @@
                         <a href="https://172.25.0.42/AmbulatorioOsteoporosi/" class="button-link">Osteoporosi</a>
                         <a href="https://serviziweb2.inps.it/PassiWeb/jsp/spid/loginSPID.jsp?uri=https%3a%2f%2fservizi2.inps.it%2fservizi%2fareariservata&S=S" class="button-link">INPS</a>
                         <a href="https://www.uptodate.com/login" class="button-link">UPTODATE</a>
+						<a href="https://medicinali.aifa.gov.it/it/#/it/" class="button-link">Schede tecniche farmaci</a>
                     </div>
                 </div>
 
