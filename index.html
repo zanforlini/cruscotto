@@ -124,6 +124,41 @@
             background-color: #2980b9;
         }
 
+        /* Stili aggiuntivi per i campi di input degli esami */
+        .exams-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            text-align: left;
+            padding: 0 20px;
+        }
+        .exam-item {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+        .exam-item label {
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .exam-item input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            border: none;
+            border-radius: 4px;
+            background-color: #34495e;
+            color: #ecf0f1;
+            box-sizing: border-box;
+            font-size: 1em;
+        }
+        .exam-item .range {
+            font-size: 0.8em;
+            color: #bdc3c7;
+            margin-top: 5px;
+        }
+
     </style>
 </head>
 <body>
@@ -158,6 +193,7 @@
                         <a href="http://healthmeeting.sanita.padova.it/HealthMeeting/#/login" class="button-link">Telemedicina</a>
                         <a href="https://172.25.0.42/AmbulatorioOsteoporosi/" class="button-link">Osteoporosi</a>
                         <a href="https://serviziweb2.inps.it/PassiWeb/jsp/spid/loginSPID.jsp?uri=https%3a%2f%2fservizi2.inps.it%2fservizi%2fareariservata&S=S" class="button-link">INPS</a>
+                        <a href="https://www.uptodate.com/login" class="button-link">UPTODATE</a>
                     </div>
                 </div>
 
@@ -178,17 +214,161 @@
                         <a href="https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=9199bf20-a13f-4107-85dc-02114787ef48&scope=https%3A%2F%2Foutlook.office.com%2F.default%20openid%20profile%20offline_access&redirect_uri=https%3A%2F%2Foutlook.live.com%2Fmail%2F&clien" class="button-link">Outlook</a>
                     </div>
                 </div>
+                <div class="section-container">
+                    <h2>Ricerca</h2>
+                    <div class="button-list">
+                        <a href="https://pubmed.ncbi.nlm.nih.gov/" class="button-link">PUBMED</a>
+                        <a href="https://www.scopus.com/pages/home#author" class="button-link">SCOPUS</a>
+                        <a href="https://www.scimagojr.com/" class="button-link">Statistiche riviste</a>
+                    </div>
+                </div>
+
             </div>
         </div>
+
         <div class="tab-content calcolatori">
             <p>Contenuto della scheda Calcolatori.</p>
         </div>
 
         <div class="tab-content esami">
             <p>Contenuto della scheda Esami Ematochimici.</p>
-        </div>
-        
+            <div class="exams-grid">
+                <div class="exam-item">
+  		   <label for="creatinina">Creatinina</label>
+  		   <div style="display: flex; gap: 5px; align-items: center;">
+    		   <input type="text" id="creatinina" name="creatinina">
+    		   <select id="unit">
+      		   <option value="μmol">μmol/L</option>
+      		   <option value="mgdl">mg/dL</option>
+    		   </select>
+    		   <button type="button" onclick="converti()">↔</button>
+  		</div>
+  		   <p id="risultato" style="font-size:0.9em; color:#bdc3c7; 		   margin-top:5px;"></p>
+		</div>
+
+                <div class="exam-item">
+                    <label for="ast">AST (U/L)</label>
+                    <input type="text" id="ast">
+                    <span class="range">Range: 10 - 35</span>
+                </div>
+                <div class="exam-item">
+                    <label for="alt">ALT (U/L)</label>
+                    <input type="text" id="alt">
+                    <span class="range">Range: 7 - 35</span>
+                </div>
+                <div class="exam-item">
+                    <label for="bilirubina">Bilirubina Totale (umol/L)</label>
+                    <input type="text" id="bilirubina">
+                    <span class="range">Range: 1,7 - 17,0</span>
+                </div>
+                <div class="exam-item">
+                    <label for="ferro">Ferro (umol/L)</label>
+                    <input type="text" id="ferro">
+                    <span class="range">Range: 11,6 - 31,3</span>
+                </div>
+                <div class="exam-item">
+                    <label for="transferrina">Transferrina (g/L)</label>
+                    <input type="text" id="transferrina">
+                    <span class="range">Range: 2,00 - 3,60</span>
+                </div>
+                <div class="exam-item">
+                    <label for="saturazione-transferrina">Saturazione Transferrina (%)</label>
+                    <input type="text" id="saturazione-transferrina">
+                    <span class="range">Range: 16,00 - 49,00</span>
+                </div>
+                <div class="exam-item">
+                    <label for="ferritina">Ferritina (ug/L)</label>
+                    <input type="text" id="ferritina">
+                    <span class="range">Range: 31 - 409</span>
+                </div>
+                <div class="exam-item">
+                    <label for="colesterolo-totale">Colesterolo Totale (mmol/L)</label>
+                    <input type="text" id="colesterolo-totale">
+                    <span class="range">Desiderabile: &lt; 5,18</span>
+                </div>
+                <div class="exam-item">
+                    <label for="hdl">HDL (mmol/L)</label>
+                    <input type="text" id="hdl">
+                    <span class="range">Desiderabile: > 1,04</span>
+                </div>
+                <div class="exam-item">
+                    <label for="ldl">LDL (mmol/L)</label>
+                    <input type="text" id="ldl">
+                    <span class="range"></span>
+                </div>
+                <div class="exam-item">
+                    <label for="trigliceridi">Trigliceridi (mmol/L)</label>
+                    <input type="text" id="trigliceridi">
+                    <span class="range">Desiderabile: < 1,70</span>
+                </div>
+                <div class="exam-item">
+                    <label for="p-calcio">P-Calcio (mmol/L)</label>
+                    <input type="text" id="p-calcio">
+                    <span class="range">Range: 2,10 - 2,55</span>
+                </div>
+                <div class="exam-item">
+                    <label for="p-fosforo">P-Fosforo (mmol/L)</label>
+                    <input type="text" id="p-fosforo">
+                    <span class="range"></span>
+                </div>
+                <div class="exam-item">
+                    <label for="diuresi-24h">Diuresi 24h (mL)</label>
+                    <input type="text" id="diuresi-24h">
+                    <span class="range">Range: ~1500</span>
+                </div>
+                <div class="exam-item">
+                    <label for="u-calcio">U-Calcio (mmol/24h)</label>
+                    <input type="text" id="u-calcio">
+                    <span class="range">Range: 2,50 - 7,50</span>
+                </div>
+                <div class="exam-item">
+                    <label for="u-fosforo">U-Fosforo (mmol/24h)</label>
+                    <input type="text" id="u-fosforo">
+                    <span class="range"></span>
+                </div>
+                <div class="exam-item">
+                    <label for="pth">PTH (ng/L)</label>
+                    <input type="text" id="pth">
+                    <span class="range"></span>
+                </div>
+                <div class="exam-item">
+                    <label for="ctx">CTX (ng/L)</label>
+                    <input type="text" id="ctx">
+                    <span class="range">Pre-menopausa: 121 - 747</span>
+                </div>
+                <div class="exam-item">
+                    <label for="vitamina-d">Vitamina 25-D (nmol/L)</label>
+                    <input type="text" id="vitamina-d">
+                    <span class="range">Soglia: > 50</span>
+                </div>
+            </div>
+        </div>        
     </div>
 
 </body>
+
+<script>
+function converti() {
+  let valore = parseFloat(document.getElementById("creatinina").value);
+  let unita = document.getElementById("unit").value;
+  let risultato, nuovaUnita;
+  
+  if (isNaN(valore)) {
+    document.getElementById("risultato").innerText = "Inserisci un valore valido.";
+    return;
+  }
+  
+  if (unita === "μmol") {
+    risultato = (valore / 88.4).toFixed(2);
+    nuovaUnita = "mg/dL";
+  } else {
+    risultato = (valore * 88.4).toFixed(2);
+    nuovaUnita = "μmol/L";
+  }
+  
+  document.getElementById("risultato").innerText =
+    "Valore convertito: " + risultato + " " + nuovaUnita;
+}
+</script>
+
 </html>
