@@ -219,6 +219,8 @@
                 <div class="section-container">
                     <h2>Ricerca</h2>
                     <div class="button-list">
+						<a href="https://www.mendeley.com/search/" class="button-link">Mendeley</a>
+						<a href="https://redcap.medicinadimed.unipd.it/" class="button-link">REDCAP UNIPD</a>
                         <a href="https://pubmed.ncbi.nlm.nih.gov/" class="button-link">PUBMED</a>
                         <a href="https://www.scopus.com/pages/home#author" class="button-link">SCOPUS</a>
                         <a href="https://www.scimagojr.com/" class="button-link">Statistiche riviste</a>
