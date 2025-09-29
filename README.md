@@ -169,11 +169,22 @@
         <input type="radio" name="tabs" id="tab1" checked>
         <input type="radio" name="tabs" id="tab2">
         <input type="radio" name="tabs" id="tab3">
+		
+		<style>
+		.tab-content {
+ 		 display: none;
+		}
+		#tab1:checked ~ .tab-content.calcolatori,
+		#tab2:checked ~ .tab-content.esami,
+		#tab3:checked ~ .tab-content.siti {
+		  display: block;
+		}
+		</style>
 
         <div class="tabs-list">
-            <label for="tab3">Siti Esterni</label>
-            <label for="tab1">Calcolatori</label>
-            <label for="tab2">Esami Ematochimici</label>
+            <label for="tab1">Siti Esterni</label>
+            <label for="tab2">Calcolatori</label>
+            <label for="tab3">Esami Ematochimici</label>
         </div>
         <div class="tab-content siti">
             <div class="sites-grid">
@@ -194,7 +205,6 @@
                         <a href="https://172.25.0.42/AmbulatorioOsteoporosi/" class="button-link">Osteoporosi</a>
                         <a href="https://serviziweb2.inps.it/PassiWeb/jsp/spid/loginSPID.jsp?uri=https%3a%2f%2fservizi2.inps.it%2fservizi%2fareariservata&S=S" class="button-link">INPS</a>
                         <a href="https://www.uptodate.com/login" class="button-link">UPTODATE</a>
-						<a href="https://medicinali.aifa.gov.it/it/#/it/" class="button-link">Schede tecniche farmaci</a>
                     </div>
                 </div>
 
@@ -210,17 +220,14 @@
                 <div class="section-container">
                     <h2>Login</h2>
                     <div class="button-list">
-                        <a href="https://intranet.sanita.padova.it/web/portal" class="button-link">Intranet AOUP</a>
-						<a href="https://www.eduiss.it/course/view.php?id=521" class="button-link">EDUISS FORMAZIONE SUPERIORE</a>
+                        <a href="https://www.eduiss.it/course/view.php?id=521" class="button-link">EDUISS FORMAZIONE SUPERIORE</a>
                         <a href="https://myaccount.google.com/" class="button-link">Gmail</a>
-                        <a href="https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=9199bf20-a13f-4107-85dc-02114787ef48&scope=https%3A%2F%2Foutlook.office.com%2F.default%20openid%20profile%20offline_access&redirect_uri=https%3A%2F%2Foutlook.live.com%2Fmail%2F&clien" class="button-link">Outlook</a>
+                        <a href="https://login.microsoftonline.com/common/oauth2/v2.0/authorize?...&clien" class="button-link">Outlook</a>
                     </div>
                 </div>
                 <div class="section-container">
                     <h2>Ricerca</h2>
                     <div class="button-list">
-						<a href="https://www.mendeley.com/search/" class="button-link">Mendeley</a>
-						<a href="https://redcap.medicinadimed.unipd.it/" class="button-link">REDCAP UNIPD</a>
                         <a href="https://pubmed.ncbi.nlm.nih.gov/" class="button-link">PUBMED</a>
                         <a href="https://www.scopus.com/pages/home#author" class="button-link">SCOPUS</a>
                         <a href="https://www.scimagojr.com/" class="button-link">Statistiche riviste</a>
@@ -293,7 +300,7 @@
                 <div class="exam-item">
                     <label for="hdl">HDL (mmol/L)</label>
                     <input type="text" id="hdl">
-                    <span class="range">Desiderabile: > 1,04</span>
+                    <span class="range">Desiderabile: &gt; 1,04</span>
                 </div>
                 <div class="exam-item">
                     <label for="ldl">LDL (mmol/L)</label>
@@ -303,7 +310,8 @@
                 <div class="exam-item">
                     <label for="trigliceridi">Trigliceridi (mmol/L)</label>
                     <input type="text" id="trigliceridi">
-                    <span class="range">Desiderabile: < 1,70</span>
+                    <span class="range">Desiderabile: &lt; 1,70</span>
+
                 </div>
                 <div class="exam-item">
                     <label for="p-calcio">P-Calcio (mmol/L)</label>
