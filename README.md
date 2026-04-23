@@ -9,7 +9,7 @@
 :root {
   --bg:#0f1117; --surface:#181c27; --surface2:#1e2436;
   --accent:#4a9eff; --accent2:#7dd3b0; --accent3:#f0a05a;
-  --text:#e8eaf0; --muted:#7a8099; --border:#2a3048; --radius:10px;
+  --text:#f0f2f8; --muted:#9aa3bc; --border:#2a3048; --radius:10px;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;
@@ -33,10 +33,14 @@ h1 span{font-style:italic;color:var(--accent);font-weight:300}
 .tab-panel{display:none}
 #r-siti:checked  ~ .tabs-nav label[for=r-siti],
 #r-calc:checked  ~ .tabs-nav label[for=r-calc],
-#r-esami:checked ~ .tabs-nav label[for=r-esami]{background:var(--accent);color:#fff;font-weight:600}
+#r-esami:checked ~ .tabs-nav label[for=r-esami],
+#r-referto:checked ~ .tabs-nav label[for=r-referto],
+#r-biblio:checked ~ .tabs-nav label[for=r-biblio]{background:var(--accent);color:#fff;font-weight:600}
 #r-siti:checked  ~ .tab-panels .panel-siti,
 #r-calc:checked  ~ .tab-panels .panel-calc,
-#r-esami:checked ~ .tab-panels .panel-esami{display:block}
+#r-esami:checked ~ .tab-panels .panel-esami,
+#r-referto:checked ~ .tab-panels .panel-referto,
+#r-biblio:checked ~ .tab-panels .panel-biblio{display:block}
 
 /* SITI */
 .sites-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
@@ -83,22 +87,22 @@ h1 span{font-style:italic;color:var(--accent);font-weight:300}
   border-radius:6px;color:var(--text);font-family:'JetBrains Mono',monospace;font-size:.9rem}
 .pfield input:focus,.pfield select:focus{outline:none;border-color:var(--accent)}
 .exams-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px}
-.exam-section-title{grid-column:1/-1;font-family:'Crimson Pro',serif;font-size:1rem;font-style:italic;
-  color:var(--accent3);padding:8px 0 4px;border-bottom:1px solid var(--border);letter-spacing:.05em}
+.exam-section-title{grid-column:1/-1;font-family:'Crimson Pro',serif;font-size:1.05rem;font-style:italic;
+  color:#f0a05a;padding:8px 0 4px;border-bottom:1px solid var(--border);letter-spacing:.05em;font-weight:600}
 .exam-item{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:14px 16px;transition:border-color .2s}
 .exam-item:hover{border-color:#3a4560}
-.exam-label{font-size:.78rem;font-weight:600;color:var(--muted);text-transform:uppercase;
+.exam-label{font-size:.78rem;font-weight:700;color:#c8cfe0;text-transform:uppercase;
   letter-spacing:.07em;margin-bottom:8px;display:flex;justify-content:space-between;align-items:center}
-.exam-range{font-size:.72rem;color:var(--muted);font-weight:400;font-family:'JetBrains Mono',monospace}
+.exam-range{font-size:.72rem;color:#8a96b4;font-weight:400;font-family:'JetBrains Mono',monospace}
 .input-row{display:flex;gap:8px;align-items:center}
 .exam-input{flex:1;padding:8px 10px;background:var(--bg);border:1px solid var(--border);border-radius:6px;
-  color:var(--text);font-family:'JetBrains Mono',monospace;font-size:.95rem;transition:border-color .15s;min-width:0}
+  color:#f0f2f8;font-family:'JetBrains Mono',monospace;font-size:.95rem;transition:border-color .15s;min-width:0}
 .exam-input:focus{outline:none;border-color:var(--accent);background:#141820}
 .exam-input.hi{border-color:#f97316;color:#f97316} .exam-input.lo{border-color:#60a5fa;color:#60a5fa} .exam-input.ok{border-color:var(--accent2)}
 .unit-select{padding:8px 6px;background:var(--surface2);border:1px solid var(--border);border-radius:6px;color:var(--muted);font-size:.78rem;cursor:pointer}
 .convert-btn{padding:8px 10px;background:var(--surface2);border:1px solid var(--border);border-radius:6px;color:var(--accent);cursor:pointer;font-size:1rem;transition:all .15s}
 .convert-btn:hover{background:var(--accent);color:#fff}
-.result-line{font-size:.78rem;color:var(--muted);font-family:'JetBrains Mono',monospace;margin-top:6px;min-height:16px}
+.result-line{font-size:.78rem;color:#8a96b4;font-family:'JetBrains Mono',monospace;margin-top:6px;min-height:16px}
 .result-line.ok{color:var(--accent2)} .result-line.warn{color:#f97316} .result-line.err{color:#ef4444}
 .calc-badge{font-size:.65rem;background:rgba(74,158,255,.15);color:var(--accent);padding:2px 7px;border-radius:10px;letter-spacing:.04em;font-family:'Outfit',sans-serif;font-weight:500}
 
@@ -111,6 +115,31 @@ h1 span{font-style:italic;color:var(--accent);font-weight:300}
 .vfg-unit{font-size:.68rem;color:var(--muted);margin-top:2px}
 .vfg-cell.g1{border-color:var(--accent2)} .vfg-cell.g2{border-color:#a3e635}
 .vfg-cell.g3{border-color:#f59e0b} .vfg-cell.g4{border-color:#f97316} .vfg-cell.g5{border-color:#ef4444}
+
+/* REFERTO */
+.ref-header{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:12px;
+  background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:18px 22px;margin-bottom:14px}
+.ref-place{font-family:'Crimson Pro',serif;font-size:1.3rem;font-weight:600;color:var(--text);font-style:italic}
+.ref-date{font-size:.85rem;color:var(--muted);margin-top:3px}
+.ref-note{font-size:.76rem;color:var(--muted);margin-bottom:10px;font-style:italic}
+.ref-textarea{width:100%;min-height:480px;background:var(--surface);border:1px solid var(--border);
+  border-radius:var(--radius);padding:22px 24px;color:#f0f2f8;font-family:'Outfit',sans-serif;
+  font-size:.95rem;line-height:1.8;resize:vertical}
+.ref-textarea:focus{outline:none;border-color:var(--accent)}
+
+/* BIBLIOGRAFIA */
+.biblio-wrap{display:flex;flex-direction:column;gap:24px}
+.biblio-section{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:24px}
+.biblio-section h3{font-family:'Crimson Pro',serif;font-size:1.15rem;font-weight:600;font-style:italic;
+  color:var(--accent2);margin-bottom:18px;padding-bottom:10px;border-bottom:1px solid var(--border)}
+.biblio-formula{margin-bottom:20px;padding-bottom:20px;border-bottom:1px dashed var(--border)}
+.biblio-formula:last-child{margin-bottom:0;padding-bottom:0;border-bottom:none}
+.biblio-formula-title{font-weight:700;color:#c8cfe0;font-size:.9rem;margin-bottom:7px;letter-spacing:.02em}
+.biblio-formula-eq{font-family:'JetBrains Mono',monospace;font-size:.82rem;color:var(--accent);
+  background:rgba(74,158,255,.07);border:1px solid rgba(74,158,255,.15);border-radius:6px;
+  padding:10px 14px;margin-bottom:8px;line-height:1.7;white-space:pre-wrap}
+.biblio-formula-note{font-size:.8rem;color:var(--muted);line-height:1.6;margin-bottom:7px}
+.biblio-ref{font-size:.78rem;color:#6a7490;font-style:italic;line-height:1.6}
 
 @media(max-width:640px){
   .patient-bar-fields{grid-template-columns:1fr 1fr}
@@ -130,11 +159,15 @@ h1 span{font-style:italic;color:var(--accent);font-weight:300}
   <input type="radio" name="tabs" id="r-siti" checked>
   <input type="radio" name="tabs" id="r-calc">
   <input type="radio" name="tabs" id="r-esami">
+  <input type="radio" name="tabs" id="r-referto">
+  <input type="radio" name="tabs" id="r-biblio">
 
   <div class="tabs-nav">
-    <label for="r-siti">🔗 Siti Esterni</label>
+    <label for="r-siti">🔗 Siti</label>
     <label for="r-calc">🧮 Calcolatori</label>
-    <label for="r-esami">🩸 Esami Ematochimici</label>
+    <label for="r-esami">🩸 Esami</label>
+    <label for="r-referto">📄 Referto</label>
+    <label for="r-biblio">📚 Bibliografia</label>
   </div>
 
   <div class="tab-panels">
@@ -272,20 +305,55 @@ h1 span{font-style:italic;color:var(--accent);font-weight:300}
           <div class="pfield"><label>Peso (kg)</label><input type="number" id="p-peso" min="20" max="300" step=".1" placeholder="es. 70" oninput="ricalcolaTutto()"></div>
           <div class="pfield"><label>PAS (mmHg)</label><input type="number" id="p-pas" min="80" max="240" placeholder="es. 130" oninput="ricalcolaTutto()"></div>
           <div class="pfield"><label>Fumatore</label>
-            <select id="p-fumo" onchange="ricalcolaTutto()"><option value="0">No</option><option value="1">Sì</option></select>
+            <select id="p-fumo" onchange="ricalcolaTutto()"><option value="0">No</option><option value="1">Si</option></select>
+          </div>
+          <div class="pfield"><label>Data esami</label>
+            <input type="date" id="p-data-esami">
           </div>
         </div>
       </div>
 
       <div class="exams-grid">
 
-        <!-- ── FUNZIONE RENALE ── -->
-        <div class="exam-section-title">Funzione renale</div>
-
+        <!-- ══ EMOCROMO ══ -->
+        <div class="exam-section-title">Emocromo</div>
         <div class="exam-item">
-          <div class="exam-label">Creatinina <span class="exam-range">μmol/L ↔ mg/dL</span></div>
+          <div class="exam-label">RBC — Globuli rossi <span class="exam-range">4.31–5.10 · 10¹²/L</span></div>
+          <div class="input-row"><input type="number" class="exam-input" id="rbc" placeholder="0.00" step=".01" oninput="checkRange('rbc',4.31,5.10,'10¹²/L')"></div>
+          <div class="result-line" id="rbc-result"></div>
+        </div>
+        <div class="exam-item">
+          <div class="exam-label">Hb in PEC <span class="exam-range">123–153 g/L</span></div>
+          <div class="input-row"><input type="number" class="exam-input" id="hb" placeholder="0" oninput="checkRange('hb',123,153,'g/L')"></div>
+          <div class="result-line" id="hb-result"></div>
+        </div>
+        <div class="exam-item">
+          <div class="exam-label">Ematocrito <span class="exam-range">0.360–0.450 L/L</span></div>
+          <div class="input-row"><input type="number" class="exam-input" id="htc" placeholder="0.000" step=".001" oninput="checkRange('htc',.360,.450,'L/L')"></div>
+          <div class="result-line" id="htc-result"></div>
+        </div>
+        <div class="exam-item">
+          <div class="exam-label">MCV <span class="exam-range">80.0–96.0 fL</span></div>
+          <div class="input-row"><input type="number" class="exam-input" id="mcv" placeholder="0.0" step=".1" oninput="checkRange('mcv',80,96,'fL')"></div>
+          <div class="result-line" id="mcv-result"></div>
+        </div>
+        <div class="exam-item">
+          <div class="exam-label">Piastrine <span class="exam-range">150–450 · 10⁹/L</span></div>
+          <div class="input-row"><input type="number" class="exam-input" id="plt" placeholder="0" oninput="checkRange('plt',150,450,'10⁹/L')"></div>
+          <div class="result-line" id="plt-result"></div>
+        </div>
+
+        <!-- ══ FUNZIONE RENALE ══ -->
+        <div class="exam-section-title">Funzione renale</div>
+        <div class="exam-item">
+          <div class="exam-label">P-Urea <span class="exam-range">2.50–7.50 mmol/L</span></div>
+          <div class="input-row"><input type="number" class="exam-input" id="urea" placeholder="0.0" step=".1" oninput="checkRange('urea',2.5,7.5,'mmol/L')"></div>
+          <div class="result-line" id="urea-result"></div>
+        </div>
+        <div class="exam-item">
+          <div class="exam-label">P-Creatinina <span class="exam-range">45–84 μmol/L</span></div>
           <div class="input-row">
-            <input type="number" class="exam-input" id="creatinina" placeholder="0.0" step=".01" oninput="ricalcolaTutto()">
+            <input type="number" class="exam-input" id="creatinina" placeholder="0.0" step=".1" oninput="ricalcolaTutto()">
             <select class="unit-select" id="creat-unit" onchange="ricalcolaTutto()">
               <option value="umol">μmol/L</option><option value="mgdl">mg/dL</option>
             </select>
@@ -293,16 +361,15 @@ h1 span{font-style:italic;color:var(--accent);font-weight:300}
           </div>
           <div class="result-line" id="creatinina-result"></div>
         </div>
-
         <div class="exam-item">
-          <div class="exam-label">Cistatina C <span class="exam-range">0.50–1.00 mg/L</span></div>
+          <div class="exam-label">Cistatina C <span class="exam-range">0.55–1.00 mg/L</span></div>
           <div class="input-row">
-            <input type="number" class="exam-input" id="cistatina-c" placeholder="0.00" step=".01" oninput="checkRange('cistatina-c',.5,1,'mg/L'); ricalcolaTutto()">
+            <input type="number" class="exam-input" id="cistatina-c" placeholder="0.00" step=".01" oninput="checkRange('cistatina-c',.55,1,'mg/L'); ricalcolaTutto()">
           </div>
           <div class="result-line" id="cistatina-c-result"></div>
         </div>
 
-        <!-- VFG BOX — full width -->
+        <!-- VFG BOX -->
         <div class="exam-item vfg-box">
           <div class="exam-label">Velocità Filtrazione Glomerulare <span class="calc-badge">⚡ auto</span></div>
           <div class="vfg-grid">
@@ -315,9 +382,26 @@ h1 span{font-style:italic;color:var(--accent);font-weight:300}
           <div style="font-size:.7rem;color:var(--muted);margin-top:4px">CG richiede peso · BIS2 richiede cistatina C · tutti richiedono età e sesso</div>
         </div>
 
-        <!-- ── FUNZIONALITÀ EPATICA ── -->
-        <div class="exam-section-title">Funzionalità epatica</div>
+        <!-- ══ ELETTROLITI ══ -->
+        <div class="exam-section-title">Elettroliti</div>
+        <div class="exam-item">
+          <div class="exam-label">P-Na (Sodio) <span class="exam-range">136–145 mmol/L</span></div>
+          <div class="input-row"><input type="number" class="exam-input" id="na" placeholder="0" oninput="checkRange('na',136,145,'mmol/L')"></div>
+          <div class="result-line" id="na-result"></div>
+        </div>
+        <div class="exam-item">
+          <div class="exam-label">P-K (Potassio) <span class="exam-range">3.4–4.5 mmol/L</span></div>
+          <div class="input-row"><input type="number" class="exam-input" id="kpot" placeholder="0.0" step=".1" oninput="checkRange('kpot',3.4,4.5,'mmol/L')"></div>
+          <div class="result-line" id="kpot-result"></div>
+        </div>
+        <div class="exam-item">
+          <div class="exam-label">P-Mg (Magnesio) <span class="exam-range">0.70–1.05 mmol/L</span></div>
+          <div class="input-row"><input type="number" class="exam-input" id="mg" placeholder="0.00" step=".01" oninput="checkRange('mg',.70,1.05,'mmol/L')"></div>
+          <div class="result-line" id="mg-result"></div>
+        </div>
 
+        <!-- ══ FUNZIONALITÀ EPATICA ══ -->
+        <div class="exam-section-title">Funzionalità epatica</div>
         <div class="exam-item">
           <div class="exam-label">AST <span class="exam-range">10–35 U/L</span></div>
           <div class="input-row"><input type="number" class="exam-input" id="ast" placeholder="0" oninput="checkRange('ast',10,35,'U/L')"></div>
@@ -329,21 +413,25 @@ h1 span{font-style:italic;color:var(--accent);font-weight:300}
           <div class="result-line" id="alt-result"></div>
         </div>
         <div class="exam-item">
+          <div class="exam-label">P-ALP <span class="exam-range">33–98 U/L</span></div>
+          <div class="input-row"><input type="number" class="exam-input" id="alp" placeholder="0" oninput="checkRange('alp',33,98,'U/L')"></div>
+          <div class="result-line" id="alp-result"></div>
+        </div>
+        <div class="exam-item">
           <div class="exam-label">Bilirubina Tot. <span class="exam-range">1.7–17.0 μmol/L</span></div>
           <div class="input-row"><input type="number" class="exam-input" id="bilirubina" placeholder="0.0" step=".1" oninput="checkRange('bilirubina',1.7,17,'μmol/L')"></div>
           <div class="result-line" id="bilirubina-result"></div>
         </div>
         <div class="exam-item">
-          <div class="exam-label">Albumina <span class="exam-range">35–50 g/L</span></div>
+          <div class="exam-label">P-Albumina <span class="exam-range">32–46 g/L</span></div>
           <div class="input-row">
-            <input type="number" class="exam-input" id="albumina" placeholder="0.0" step=".1" oninput="checkRange('albumina',35,50,'g/L'); calcolaCalcioCorretto()">
+            <input type="number" class="exam-input" id="albumina" placeholder="0.0" step=".1" oninput="checkRange('albumina',32,46,'g/L'); calcolaCalcioCorretto()">
           </div>
           <div class="result-line" id="albumina-result"></div>
         </div>
 
-        <!-- ── METABOLISMO FERRO ── -->
+        <!-- ══ METABOLISMO FERRO ══ -->
         <div class="exam-section-title">Metabolismo del ferro</div>
-
         <div class="exam-item">
           <div class="exam-label">Ferro <span class="exam-range">11.6–31.3 μmol/L</span></div>
           <div class="input-row"><input type="number" class="exam-input" id="ferro" placeholder="0.0" step=".1" oninput="checkRange('ferro',11.6,31.3,'μmol/L'); calcolaIST()"></div>
@@ -368,11 +456,10 @@ h1 span{font-style:italic;color:var(--accent);font-weight:300}
           <div class="result-line" id="ferritina-result"></div>
         </div>
 
-        <!-- ── LIPIDI ── -->
-        <div class="exam-section-title">Lipidi — converti con ⇄; LDL calcolata automaticamente (Friedewald)</div>
-
+        <!-- ══ LIPIDI ══ -->
+        <div class="exam-section-title">Lipidi — converti con ⇄ · LDL calcolata (Friedewald)</div>
         <div class="exam-item">
-          <div class="exam-label">Colesterolo Totale <span class="exam-range">&lt;5.18 mmol · &lt;200 mg/dL</span></div>
+          <div class="exam-label">Colesterolo Totale <span class="exam-range">2.00–6.19 mmol/L</span></div>
           <div class="input-row">
             <input type="number" class="exam-input" id="colest" placeholder="0.0" step=".01" oninput="calcolaLipidi()">
             <select class="unit-select" id="colest-unit" onchange="calcolaLipidi()"><option value="mmol">mmol/L</option><option value="mgdl">mg/dL</option></select>
@@ -381,7 +468,7 @@ h1 span{font-style:italic;color:var(--accent);font-weight:300}
           <div class="result-line" id="colest-result"></div>
         </div>
         <div class="exam-item">
-          <div class="exam-label">HDL <span class="exam-range">&gt;1.04 mmol · &gt;40 mg/dL</span></div>
+          <div class="exam-label">P-HDL <span class="exam-range">0.80–3.00 mmol/L</span></div>
           <div class="input-row">
             <input type="number" class="exam-input" id="hdl" placeholder="0.0" step=".01" oninput="calcolaLipidi()">
             <select class="unit-select" id="hdl-unit" onchange="calcolaLipidi()"><option value="mmol">mmol/L</option><option value="mgdl">mg/dL</option></select>
@@ -390,7 +477,7 @@ h1 span{font-style:italic;color:var(--accent);font-weight:300}
           <div class="result-line" id="hdl-result"></div>
         </div>
         <div class="exam-item">
-          <div class="exam-label">Trigliceridi <span class="exam-range">&lt;1.70 mmol · &lt;150 mg/dL</span></div>
+          <div class="exam-label">P-Trigliceridi <span class="exam-range">0.00–1.69 mmol/L</span></div>
           <div class="input-row">
             <input type="number" class="exam-input" id="tg" placeholder="0.0" step=".01" oninput="calcolaLipidi()">
             <select class="unit-select" id="tg-unit" onchange="calcolaLipidi()"><option value="mmol">mmol/L</option><option value="mgdl">mg/dL</option></select>
@@ -417,11 +504,10 @@ h1 span{font-style:italic;color:var(--accent);font-weight:300}
           <div class="result-line" id="lpa-result"></div>
         </div>
 
-        <!-- ── CALCIO-FOSFORO ── -->
+        <!-- ══ CALCIO-FOSFORO ══ -->
         <div class="exam-section-title">Metabolismo calcio-fosforo</div>
-
         <div class="exam-item">
-          <div class="exam-label">P-Calcio <span class="exam-range">2.10–2.55 mmol · 8.4–10.2 mg/dL</span></div>
+          <div class="exam-label">P-Calcio <span class="exam-range">2.10–2.55 mmol/L</span></div>
           <div class="input-row">
             <input type="number" class="exam-input" id="calcio" placeholder="0.0" step=".01" oninput="checkCalcio(); calcolaCalcioCorretto()">
             <select class="unit-select" id="calcio-unit" onchange="checkCalcio(); calcolaCalcioCorretto()"><option value="mmol">mmol/L</option><option value="mgdl">mg/dL</option></select>
@@ -429,29 +515,26 @@ h1 span{font-style:italic;color:var(--accent);font-weight:300}
           </div>
           <div class="result-line" id="calcio-result"></div>
         </div>
-
-        <!-- CALCIO CORRETTO (auto) -->
         <div class="exam-item">
-          <div class="exam-label">Calcio corretto per albumina <span class="calc-badge">⚡ auto</span></div>
+          <div class="exam-label">Calcio corretto albumina <span class="calc-badge">⚡ auto</span></div>
           <div class="input-row">
             <input type="number" class="exam-input" id="calcio-corr" placeholder="calcolato" readonly style="opacity:.6">
             <span style="font-size:.78rem;color:var(--muted);white-space:nowrap">mmol/L</span>
           </div>
           <div class="result-line" id="calcio-corr-result">Inserisci calcio e albumina</div>
         </div>
-
         <div class="exam-item">
-          <div class="exam-label">P-Fosforo <span class="exam-range">0.81–1.45 mmol/L</span></div>
-          <div class="input-row"><input type="number" class="exam-input" id="fosforo" placeholder="0.0" step=".01" oninput="checkRange('fosforo',.81,1.45,'mmol/L')"></div>
+          <div class="exam-label">P-Fosforo <span class="exam-range">0.87–1.45 mmol/L</span></div>
+          <div class="input-row"><input type="number" class="exam-input" id="fosforo" placeholder="0.0" step=".01" oninput="checkRange('fosforo',.87,1.45,'mmol/L')"></div>
           <div class="result-line" id="fosforo-result"></div>
         </div>
         <div class="exam-item">
-          <div class="exam-label">PTH <span class="exam-range">15–65 ng/L</span></div>
-          <div class="input-row"><input type="number" class="exam-input" id="pth" placeholder="0" oninput="checkRange('pth',15,65,'ng/L')"></div>
+          <div class="exam-label">S-PTH <span class="exam-range">6.5–36.8 ng/L</span></div>
+          <div class="input-row"><input type="number" class="exam-input" id="pth" placeholder="0.0" step=".1" oninput="checkRange('pth',6.5,36.8,'ng/L')"></div>
           <div class="result-line" id="pth-result"></div>
         </div>
         <div class="exam-item">
-          <div class="exam-label">Vitamina 25-D <span class="exam-range">&gt;50 nmol · &gt;20 ng/mL</span></div>
+          <div class="exam-label">S-Vitamina D3 <span class="exam-range">&gt;50 nmol/L</span></div>
           <div class="input-row">
             <input type="number" class="exam-input" id="vitd" placeholder="0" oninput="checkVitD()">
             <select class="unit-select" id="vitd-unit" onchange="checkVitD()"><option value="nmol">nmol/L</option><option value="ngml">ng/mL</option></select>
@@ -460,21 +543,44 @@ h1 span{font-style:italic;color:var(--accent);font-weight:300}
           <div class="result-line" id="vitd-result"></div>
         </div>
         <div class="exam-item">
-          <div class="exam-label">CTX <span class="exam-range">121–747 ng/L (pre-men.)</span></div>
-          <div class="input-row"><input type="number" class="exam-input" id="ctx" placeholder="0" oninput="checkRange('ctx',121,747,'ng/L')"></div>
+          <div class="exam-label">P-ALP ossea <span class="exam-range">4.7–27.1 μg/L</span></div>
+          <div class="input-row"><input type="number" class="exam-input" id="alpossea" placeholder="0.0" step=".1" oninput="checkRange('alpossea',4.7,27.1,'μg/L')"></div>
+          <div class="result-line" id="alpossea-result"></div>
+        </div>
+        <div class="exam-item">
+          <div class="exam-label">CTX / beta Cross Laps <span class="exam-range" id="ctx-range-label">pre-men: 121–747 ng/L</span></div>
+          <div class="input-row"><input type="number" class="exam-input" id="ctx" placeholder="0" oninput="checkCTX()"></div>
           <div class="result-line" id="ctx-result"></div>
+          <div style="font-size:.7rem;color:var(--muted);margin-top:4px">Range dipende da stato menopausale (post-men: 189–1003 ng/L)</div>
         </div>
 
-        <!-- ── URINE 24h ── -->
-        <div class="exam-section-title">Urine 24h</div>
+        <!-- ══ TIROIDE E VITAMINE ══ -->
+        <div class="exam-section-title">Tiroide · Vitamine</div>
+        <div class="exam-item">
+          <div class="exam-label">S-TSH <span class="exam-range">0.20–4.00 mIU/L</span></div>
+          <div class="input-row"><input type="number" class="exam-input" id="tsh" placeholder="0.00" step=".01" oninput="checkRange('tsh',.20,4.00,'mIU/L')"></div>
+          <div class="result-line" id="tsh-result"></div>
+        </div>
+        <div class="exam-item">
+          <div class="exam-label">S-Folati <span class="exam-range">1.8–14.0 μg/L</span></div>
+          <div class="input-row"><input type="number" class="exam-input" id="folati" placeholder="0.0" step=".1" oninput="checkRange('folati',1.8,14,'μg/L')"></div>
+          <div class="result-line" id="folati-result"></div>
+        </div>
+        <div class="exam-item">
+          <div class="exam-label">S-Vitamina B12 <span class="exam-range">206–678 ng/L</span></div>
+          <div class="input-row"><input type="number" class="exam-input" id="b12" placeholder="0" oninput="checkRange('b12',206,678,'ng/L')"></div>
+          <div class="result-line" id="b12-result"></div>
+        </div>
 
+        <!-- ══ URINE 24h ══ -->
+        <div class="exam-section-title">Urine 24h</div>
         <div class="exam-item">
           <div class="exam-label">Diuresi 24h <span class="exam-range">~1500 mL</span></div>
           <div class="input-row"><input type="number" class="exam-input" id="diuresi" placeholder="0"></div>
           <div class="result-line" id="diuresi-result"></div>
         </div>
         <div class="exam-item">
-          <div class="exam-label">U-Calcio <span class="exam-range">2.5–7.5 mmol · &lt;4 mg/kg/die</span></div>
+          <div class="exam-label">U-Calcio <span class="exam-range">2.50–7.50 mmol/24h · &lt;4 mg/kg/die</span></div>
           <div class="input-row">
             <input type="number" class="exam-input" id="ucalcio" placeholder="0.0" step=".1" oninput="checkCalciuria()">
             <select class="unit-select" id="ucalcio-unit" onchange="checkCalciuria()"><option value="mmol">mmol/24h</option><option value="mg">mg/24h</option></select>
@@ -483,13 +589,138 @@ h1 span{font-style:italic;color:var(--accent);font-weight:300}
           <div class="result-line" id="ucalcio-result"></div>
         </div>
         <div class="exam-item">
-          <div class="exam-label">U-Fosforo <span class="exam-range">mmol/24h</span></div>
-          <div class="input-row"><input type="number" class="exam-input" id="ufosforo" placeholder="0.0" step=".1"></div>
+          <div class="exam-label">U-Fosforo <span class="exam-range">12.9–42.0 mmol/24h</span></div>
+          <div class="input-row"><input type="number" class="exam-input" id="ufosforo" placeholder="0.0" step=".1" oninput="checkRange('ufosforo',12.9,42,'mmol/24h')"></div>
           <div class="result-line" id="ufosforo-result"></div>
         </div>
 
       </div><!-- /exams-grid -->
     </div><!-- /panel-esami -->
+
+    <!-- ══════════ REFERTO ══════════ -->
+    <div class="tab-panel panel-referto">
+      <div class="ref-header">
+        <div>
+          <div class="ref-place">Padova</div>
+          <div class="ref-date" id="ref-date-display"></div>
+        </div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap">
+          <button class="calc-btn" onclick="autocompilaReferto()" style="background:var(--surface2);color:var(--accent);border:1px solid var(--accent)">⬇ Autocompila da esami</button>
+          <button class="calc-btn" onclick="scaricaTxt()">⬇ Scarica .txt</button>
+        </div>
+      </div>
+      <div class="ref-note">Il testo è completamente modificabile. Il pulsante "Scarica .txt" include automaticamente gli esami compilati e gli score calcolati nella sezione apposita.</div>
+      <textarea class="ref-textarea" id="ref-text"></textarea>
+    </div><!-- /panel-referto -->
+
+    <!-- ══════════ BIBLIOGRAFIA ══════════ -->
+    <div class="tab-panel panel-biblio">
+      <div class="biblio-wrap">
+
+        <div class="biblio-section">
+          <h3>Formule per la stima del filtrato glomerulare (VFG)</h3>
+
+          <div class="biblio-formula">
+            <div class="biblio-formula-title">Cockcroft-Gault</div>
+            <div class="biblio-formula-eq">CrCl (mL/min) = [(140 - eta) x peso (kg)] / [72 x creatinina (mg/dL)]<br>
+            Moltiplicare x 0.85 se femmina</div>
+            <div class="biblio-formula-note">Variabili: eta (anni), peso corporeo (kg), creatinina sierica (mg/dL), sesso.<br>
+            Attenzione: sovrastima il GFR nei pazienti obesi; sottostima negli anziani cachettici.</div>
+            <div class="biblio-ref">Cockcroft DW, Gault MH. Prediction of creatinine clearance from serum creatinine. <em>Nephron</em>. 1976;16(1):31-41.</div>
+          </div>
+
+          <div class="biblio-formula">
+            <div class="biblio-formula-title">CKD-EPI 2021 (senza race correction)</div>
+            <div class="biblio-formula-eq">eGFR = 142 x min(Cr/kappa, 1)^alpha x max(Cr/kappa, 1)^(-1.200) x 0.9938^eta x 1.012 (se F)<br>
+            kappa: F = 0.7, M = 0.9 (mg/dL) — alpha: F = -0.241, M = -0.302</div>
+            <div class="biblio-formula-note">Variabili: creatinina (mg/dL), eta (anni), sesso. Validata senza termine per la razza (versione 2021).</div>
+            <div class="biblio-ref">Inker LA et al. New Creatinine- and Cystatin C-Based Equations to Estimate GFR without Race. <em>N Engl J Med</em>. 2021;385(19):1737-1749.</div>
+          </div>
+
+          <div class="biblio-formula">
+            <div class="biblio-formula-title">CKD-EPI Cystatin C 2012</div>
+            <div class="biblio-formula-eq">eGFR = 133 x min(CysC/0.8, 1)^(-0.410) x max(CysC/0.8, 1)^(-0.711) x 0.9969^eta x 0.932 (se F)</div>
+            <div class="biblio-formula-note">Variabili: cistatina C sierica (mg/L), eta (anni), sesso.</div>
+            <div class="biblio-ref">Inker LA et al. Estimating glomerular filtration rate from serum creatinine and cystatin C. <em>N Engl J Med</em>. 2012;367(1):20-29.</div>
+          </div>
+
+          <div class="biblio-formula">
+            <div class="biblio-formula-title">BIS2 — Berlin Initiative Study 2 (>=70 anni)</div>
+            <div class="biblio-formula-eq">BIS2 = 767 x CysC^(-0.61) x Creat^(-0.40) x Age^(-0.57) x 0.87 (se F)<br>
+            Creatinina in mg/dL — Cistatina C in mg/L — Eta in anni</div>
+            <div class="biblio-formula-note">Sviluppata e validata specificamente per pazienti >= 70 anni. Raccomandata per anziani con funzione renale normale o mildemente ridotta.</div>
+            <div class="biblio-ref">Schaeffner ES et al. Two novel equations to estimate kidney function in persons aged 70 years or older. <em>Ann Intern Med</em>. 2012;157(7):471-481.</div>
+          </div>
+        </div>
+
+        <div class="biblio-section">
+          <h3>Calcoli automatici sugli esami</h3>
+
+          <div class="biblio-formula">
+            <div class="biblio-formula-title">Saturazione della transferrina (IST)</div>
+            <div class="biblio-formula-eq">IST (%) = [Ferro (umol/L) / (Transferrina (g/L) x 25.1)] x 100</div>
+            <div class="biblio-formula-note">Range normale: 16-49%. Valori < 16% suggeriscono carenza marziale; > 49% possibile sovraccarico di ferro o emocromatosi.</div>
+          </div>
+
+          <div class="biblio-formula">
+            <div class="biblio-formula-title">LDL colesterolo — Formula di Friedewald</div>
+            <div class="biblio-formula-eq">LDL (mmol/L) = Colesterolo Totale - HDL - (Trigliceridi / 2.2)</div>
+            <div class="biblio-formula-note">Valida solo se TG &lt; 4.52 mmol/L (400 mg/dL). Non applicabile in ipertrigliceridemia grave o disbetalipoproteinemia.</div>
+            <div class="biblio-ref">Friedewald WT et al. Estimation of the concentration of low-density lipoprotein cholesterol in plasma, without use of the preparative ultracentrifuge. <em>Clin Chem</em>. 1972;18(6):499-502.</div>
+          </div>
+
+          <div class="biblio-formula">
+            <div class="biblio-formula-title">Calcemia corretta per albumina</div>
+            <div class="biblio-formula-eq">Ca corretto (mmol/L) = Ca misurato (mmol/L) + 0.02 x (40 - Albumina (g/L))</div>
+            <div class="biblio-formula-note">Correzione indicata quando l'albumina e' al di fuori del range normale (target 40 g/L). Non sostituisce la calcemia ionizzata in situazioni cliniche critiche.</div>
+            <div class="biblio-ref">Payne RB et al. Interpretation of serum calcium in patients with abnormal serum proteins. <em>BMJ</em>. 1973;4(5893):643-644.</div>
+          </div>
+
+          <div class="biblio-formula">
+            <div class="biblio-formula-title">Conversioni principali utilizzate</div>
+            <div class="biblio-formula-eq">Creatinina: umol/L / 88.42 = mg/dL<br>
+            Colesterolo / HDL / LDL: mmol/L x 38.67 = mg/dL<br>
+            Trigliceridi: mmol/L x 88.57 = mg/dL<br>
+            Calcio: mmol/L x 4.008 = mg/dL<br>
+            Vitamina D: nmol/L / 2.496 = ng/mL<br>
+            Lipoproteina(a): nmol/L / 2.5 = mg/dL (approssimazione)</div>
+          </div>
+        </div>
+
+        <div class="biblio-section">
+          <h3>Calcolatori clinici</h3>
+
+          <div class="biblio-formula">
+            <div class="biblio-formula-title">SCORE2 e SCORE2-OP — Rischio cardiovascolare 10 anni</div>
+            <div class="biblio-formula-eq">Modello Cox competing-risk adjusted. Variabili: eta, sesso, fumo, PAS, non-HDL colesterolo.<br>
+            SCORE2: 40-69 anni — SCORE2-OP: 70-89 anni.<br>
+            Italia classificata zona a basso rischio CV (ESC 2021).<br>
+            Soglie di rischio (40-69 anni, zona low): basso &lt;5%, moderato 5-10%, alto >=10%.<br>
+            Soglie SCORE2-OP (>=70 anni): basso &lt;15%, moderato 15-30%, alto >=30%.</div>
+            <div class="biblio-formula-note">Non applicare in: CVD nota su base aterosclerotica, diabete con danno d'organo, IRC moderata-grave (eGFR 30-59), ipercolesterolemia familiare, diabete tipo 1 insorto precocemente.</div>
+            <div class="biblio-ref">SCORE2 Working Group and ESC Cardiovascular Risk Collaboration. SCORE2 risk prediction algorithms: new models to estimate 10-year risk of cardiovascular disease in Europe. <em>Eur Heart J</em>. 2021;42(25):2439-2454.<br>
+            SCORE2-OP Working Group. SCORE2-OP risk prediction algorithms: estimating incident cardiovascular event risk in older persons. <em>Eur Heart J</em>. 2021;42(25):2455-2467.</div>
+          </div>
+
+          <div class="biblio-formula">
+            <div class="biblio-formula-title">DeFRA — Densitometric Fracture Risk Assessment</div>
+            <div class="biblio-formula-eq">Modello di regressione logistica. Variabili: eta, sesso, BMI, T-score femorale, frattura pregressa,<br>familiarita' per frattura di femore, terapia cortisonica, fumo, alcol, artrite reumatoide, osteoporosi secondaria.<br>
+            Output: probabilita' di frattura vertebrale e femorale a 10 anni.</div>
+            <div class="biblio-formula-note">Algoritmo sviluppato su popolazione italiana (SIOMMMS). Alternativa italiana al FRAX. Per calcolo completo con MOC: https://www.sheffield.ac.uk/FRAX/tool.aspx?country=11</div>
+            <div class="biblio-ref">Adami S et al. Development and validation of an algorithm for the estimation of the 10-year probability of fracture (DeFRA) in postmenopausal women. <em>Osteoporos Int</em>. 2012;23(8):2159-2167.<br>
+            SIOMMMS Linee guida per la diagnosi, prevenzione e terapia dell'osteoporosi. 2016.</div>
+          </div>
+        </div>
+
+        <div class="biblio-section">
+          <h3>Valori di riferimento</h3>
+          <div class="biblio-formula">
+            <div class="biblio-formula-note">I range di riferimento utilizzati in questa applicazione sono quelli del laboratorio di riferimento dell'utente (inseriti manualmente). Per i calcoli clinici (SCORE2, soglie lipidiche, classificazione vitamine) si fa riferimento alle linee guida ESC 2021, KDIGO 2022, e alle linee guida SIOMMMS per l'osteoporosi.</div>
+          </div>
+        </div>
+
+      </div><!-- /biblio-wrap -->
+    </div><!-- /panel-biblio -->
 
   </div><!-- /tab-panels -->
 </div><!-- /tabs-wrapper -->
@@ -520,7 +751,24 @@ function checkRange(id, min, max, unit){
   else{ res.textContent='✓ Nella norma'; res.className='result-line ok'; el.classList.add('ok'); }
 }
 
-function ricalcolaTutto(){ calcolaVFG(); calcolaLipidi(); checkCalciuria(); calcolaCalcioCorretto(); }
+function ricalcolaTutto(){ calcolaVFG(); calcolaLipidi(); checkCalciuria(); calcolaCalcioCorretto();
+  // aggiorna range creatinina secondo unità
+  const u=document.getElementById('creat-unit').value;
+  if(u==='umol') checkRange('creatinina',45,84,'μmol/L');
+  else checkRange('creatinina',.51,.95,'mg/dL');
+}
+
+// CTX — doppio range pre/post-menopausa
+function checkCTX(){
+  const v=parseFloat(document.getElementById('ctx').value);
+  const r=document.getElementById('ctx-result');
+  if(isNaN(v)||v===0){ r.textContent=''; r.className='result-line'; return; }
+  // mostra entrambi i range
+  if(v<121){ r.textContent='↓ Sotto range pre-menopausa (<121 ng/L)'; r.className='result-line warn'; }
+  else if(v<=747){ r.textContent='✓ Nella norma pre-menopausa (121–747 ng/L)'; r.className='result-line ok'; }
+  else if(v<=1003){ r.textContent='✓ Nella norma post-menopausa (189–1003 ng/L) · ↑ Sopra range pre-menopausa'; r.className='result-line warn'; }
+  else{ r.textContent='↑ Sopra range post-menopausa (>1003 ng/L)'; r.className='result-line err'; }
+}
 
 // ════════════════════════════════════════════════
 // VFG — 4 formule
@@ -1060,6 +1308,186 @@ function calcolaDeFRA(){
     </div>`;
   box.classList.add('show');
 }
+
+// ════════════════════════════════════════════════
+// REFERTO — init, autocompila, scarica TXT
+// ════════════════════════════════════════════════
+function dataItaliana(d){
+  if(!d) return '';
+  const mesi=['gennaio','febbraio','marzo','aprile','maggio','giugno',
+              'luglio','agosto','settembre','ottobre','novembre','dicembre'];
+  return `${d.getDate()} ${mesi[d.getMonth()]} ${d.getFullYear()}`;
+}
+
+function initReferto(){
+  const oggi = new Date();
+  document.getElementById('ref-date-display').textContent = dataItaliana(oggi);
+
+  const tpl =
+`Padova, ${dataItaliana(oggi)}
+
+Alla cortese attenzione del medico curante,
+ha valutato in data odierna il/la sig./sig.ra *** (d.n. ***).
+
+In anamnesi patologia remota
+***
+
+Raccordo anamnestico
+***
+
+Agli esami bio-umorali eseguiti il ***
+[esami compilati]
+
+Gli score compilati riportano:
+[score calcolati]
+
+All'EO
+***
+
+Conclusione:
+***
+
+Cordiali saluti,`;
+  document.getElementById('ref-text').value = tpl;
+}
+
+function autocompilaReferto(){
+  const p = getPaz();
+  const oggi = new Date();
+  const dataEs = document.getElementById('p-data-esami').value;
+  const dataEsStr = dataEs ? dataItaliana(new Date(dataEs+'T12:00:00')) : '***';
+
+  // genere
+  let genere = 'sig./sig.ra';
+  if(p.sesso==='M') genere='sig.';
+  else if(p.sesso==='F') genere='sig.ra';
+
+  // raccoglie esami compilati
+  const esami = raccogliEsamiCompilati();
+  const score = raccogliScoreCompilati();
+
+  const tpl =
+`Padova, ${dataItaliana(oggi)}
+
+Alla cortese attenzione del medico curante,
+ha valutato in data odierna ${genere} *** (d.n. ***).
+
+In anamnesi patologia remota
+***
+
+Raccordo anamnestico
+***
+
+Agli esami bio-umorali eseguiti il ${dataEsStr}
+${esami.length ? esami.join('\n') : '***'}
+
+Gli score compilati riportano:
+${score.length ? score.join('\n') : '***'}
+
+All'EO
+***
+
+Conclusione:
+***
+
+Cordiali saluti,`;
+
+  document.getElementById('ref-text').value = tpl;
+}
+
+function raccogliEsamiCompilati(){
+  // mappa id -> etichetta leggibile e unita
+  const campi = [
+    ['rbc','RBC (Glob. rossi)','10^12/L'],['hb','Hb','g/L'],['htc','Ematocrito','L/L'],
+    ['mcv','MCV','fL'],['plt','Piastrine','10^9/L'],
+    ['urea','P-Urea','mmol/L'],
+    ['creatinina','P-Creatinina',''],  // unita dinamica
+    ['cistatina-c','Cistatina C','mg/L'],
+    ['na','P-Na','mmol/L'],['kpot','P-K','mmol/L'],['mg','P-Mg','mmol/L'],
+    ['ast','AST','U/L'],['alt','ALT','U/L'],['alp','P-ALP','U/L'],
+    ['bilirubina','Bilirubina Tot.','umol/L'],['albumina','P-Albumina','g/L'],
+    ['ferro','Ferro','umol/L'],['transferrina','Transferrina','g/L'],
+    ['ist','Sat. Transferrina (calc.)','%'],['ferritina','Ferritina','ug/L'],
+    ['colest','Colesterolo Tot.',''],['hdl','P-HDL',''],['tg','P-Trigliceridi',''],
+    ['ldl','LDL (calc.)',''],['lpa','Lipoproteina(a)',''],
+    ['calcio','P-Calcio',''],['calcio-corr','Calcio corretto (calc.)','mmol/L'],
+    ['fosforo','P-Fosforo','mmol/L'],['pth','S-PTH','ng/L'],
+    ['vitd','S-Vitamina D3',''],['alpossea','P-ALP ossea','ug/L'],
+    ['ctx','CTX / beta Cross Laps','ng/L'],
+    ['tsh','S-TSH','mIU/L'],['folati','S-Folati','ug/L'],['b12','S-Vitamina B12','ng/L'],
+    ['diuresi','Diuresi 24h','mL'],['ucalcio','U-Calcio',''],['ufosforo','U-Fosforo','mmol/24h']
+  ];
+
+  const unita_dinamiche = {
+    'creatinina': ()=>{ const u=document.getElementById('creat-unit'); return u?u.value==='umol'?'umol/L':'mg/dL':''; },
+    'colest': ()=>{ const u=document.getElementById('colest-unit'); return u?u.value==='mmol'?'mmol/L':'mg/dL':''; },
+    'hdl': ()=>{ const u=document.getElementById('hdl-unit'); return u?u.value==='mmol'?'mmol/L':'mg/dL':''; },
+    'tg': ()=>{ const u=document.getElementById('tg-unit'); return u?u.value==='mmol'?'mmol/L':'mg/dL':''; },
+    'ldl': ()=>{ const u=document.getElementById('ldl-unit'); return u?u.value==='mmol'?'mmol/L':'mg/dL':''; },
+    'lpa': ()=>{ const u=document.getElementById('lpa-unit'); return u?u.value==='nmol'?'nmol/L':'mg/dL':''; },
+    'calcio': ()=>{ const u=document.getElementById('calcio-unit'); return u?u.value==='mmol'?'mmol/L':'mg/dL':''; },
+    'vitd': ()=>{ const u=document.getElementById('vitd-unit'); return u?u.value==='nmol'?'nmol/L':'ng/mL':''; },
+    'ucalcio': ()=>{ const u=document.getElementById('ucalcio-unit'); return u?u.value==='mmol'?'mmol/24h':'mg/24h':''; },
+  };
+
+  const risultati = [];
+  campi.forEach(([id, label, unit])=>{
+    const el = document.getElementById(id);
+    if(!el) return;
+    const v = el.value.trim();
+    if(v===''||v==='0') return;
+    const u = unita_dinamiche[id] ? unita_dinamiche[id]() : unit;
+    // aggiunge indicatore range
+    const res = document.getElementById(id+'-result');
+    let flag = '';
+    if(res){
+      if(res.className.includes('err')) flag=' [BASSO]';
+      else if(res.className.includes('warn')) flag=' [ALTO]';
+    }
+    risultati.push(`  ${label}: ${v} ${u}${flag}`);
+  });
+  return risultati;
+}
+
+function raccogliScoreCompilati(){
+  const scores = [];
+  // SCORE2
+  const s2box = document.getElementById('score2-result');
+  if(s2box && s2box.classList.contains('show')){
+    const main = s2box.querySelector('.calc-result-main');
+    const lbl  = s2box.querySelector('.calc-result-label');
+    if(main && lbl) scores.push(`  SCORE2/SCORE2-OP: ${main.textContent} (${lbl.textContent})`);
+  }
+  // DeFRA
+  const dfbox = document.getElementById('defra-result');
+  if(dfbox && dfbox.classList.contains('show')){
+    const main = dfbox.querySelector('.calc-result-main');
+    const lbl  = dfbox.querySelector('.calc-result-label');
+    if(main && lbl) scores.push(`  DeFRA rischio frattura vertebrale: ${main.textContent} (${lbl.textContent})`);
+  }
+  return scores;
+}
+
+function scaricaTxt(){
+  const testo = document.getElementById('ref-text').value;
+  // testo gia' editato dall'utente — aggiungiamo in fondo la sezione esami/score se non autocompilata
+  const blob = new Blob([testo], {type:'text/plain;charset=utf-8'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  const oggi = new Date();
+  const data = `${oggi.getFullYear()}${String(oggi.getMonth()+1).padStart(2,'0')}${String(oggi.getDate()).padStart(2,'0')}`;
+  a.download = `referto_${data}.txt`;
+  a.click();
+}
+
+// Init
+window.addEventListener('DOMContentLoaded', ()=>{
+  initReferto();
+  // data display referto
+  const oggi = new Date();
+  const el = document.getElementById('ref-date-display');
+  if(el) el.textContent = dataItaliana(oggi);
+});
 </script>
 </body>
 </html>
